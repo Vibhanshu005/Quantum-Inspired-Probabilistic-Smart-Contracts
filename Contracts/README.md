@@ -206,6 +206,6 @@ Observer Effect: Measurement changes the system being observed
 
 "In the quantum realm of blockchain, probability becomes possibility, and observation becomes reality." ⚛️🚀
 
-comtract address:0x148386b512691b3b1b363baabfbd3754e767961a
+contract address:0x148386b512691b3b1b363baabfbd3754e767961a
 
 ![Screenshot (2)](https://github.com/user-attachments/assets/6fbae3e6-4ad5-4b57-a70f-48c9bf3fd3a9)
