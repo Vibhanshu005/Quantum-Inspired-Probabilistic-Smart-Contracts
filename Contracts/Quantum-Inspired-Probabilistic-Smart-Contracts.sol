@@ -217,4 +217,28 @@ contract QuantumOracle {
         QuantumState storage state = quantumStates[_stateId];
         return (block.number - state.creationBlock) > DECOHERENCE_BLOCKS;
     }
+
+    /**
+     * @dev Peek at the probability distribution of a quantum state without collapsing it
+     */
+    function peekProbabilities(bytes32 _stateId) external view returns (
+        bytes32[] memory outcomes,
+        uint256[] memory probabilities,
+        uint256[] memory percentages
+    ) {
+        QuantumState storage state = quantumStates[_stateId];
+        require(state.creationBlock != 0, "State doesn't exist");
+        require(!state.collapsed, "State already collapsed");
+
+        outcomes = state.outcomes;
+        probabilities = state.probabilities;
+        percentages = new uint256[](state.probabilities.length);
+
+        for (uint i = 0; i < state.probabilities.length; i++) {
+            percentages[i] = (state.probabilities[i] * 100) / state.totalWeight;
+        }
+
+        return (outcomes, probabilities, percentages);
+    }
 }
+
